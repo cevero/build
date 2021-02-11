@@ -29,18 +29,10 @@ ENTRY(_do_start)
 
 PAGE_SIZE = 0x1000;
 
-RAM_BASE = 0x10000;
-RAM_SIZE = 0x8000000;
+RAM_BASE = 0x40080000;
+RAM_SIZE = 0x80000000;
 
 BOOT_ADDR = RAM_BASE;
-
-STACKTOP = 0x41000000;
-
-MEMORY
-{
-	ram(wxa!ri) : ORIGIN = BOOT_ADDR, LENGTH = RAM_SIZE
-}
-
 
 SECTIONS
 {
@@ -52,17 +44,16 @@ SECTIONS
 		__BOOTSTRAP_START = .;
 		*boot*.o (.*)
 		__BOOTSTRAP_END = .;
-	} > ram
+	}
 
 	. =ALIGN(PAGE_SIZE);
 
-	.text ALIGN(PAGE_SIZE) : AT(ADDR(.text))
+	.text : AT(ADDR(.text))
 	{
 		__TEXT_START = .;
 		*(.text.*)
-		*(.rodata)
 		__TEXT_END = .;
-	} > ram
+	}
 
 	KERNEL_CODE_END = .;
 
@@ -73,16 +64,20 @@ SECTIONS
 	.data : AT(ADDR(.data))
 	{
 		__DATA_START = .;
+		*(.rodata)
+		*(.rodata.*)
+		*(.data)
 		*(.data.*)
 		__DATA_END = .;
-	} > ram
+	}
 
 	.bss : AT(ADDR(.bss))
 	{
 		__BSS_START = .;
 		*(.bss)
+		*(.bss.*)
 		__BSS_END = .;
-	} > ram
+	}
 
 	KERNEL_DATA_END = .;
 
@@ -96,6 +91,5 @@ SECTIONS
 
 	__BSS_SIZE = __BSS_END - __BSS_START;
 
-	. = STACKTOP ;
-	stack_top = .;
+	stack_top = . + 0x4000;
 }
