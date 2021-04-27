@@ -29,7 +29,7 @@
 export TARGET    ?= qemu-arm64
 export PROCESSOR := arm64
 export CLUSTER   := arm64-cluster
-export CORE      := arm64-core
+export CORE      := arm64
 
 export CFLAGS := -D __qemu_arm64__      # Target
 export CFLAGS += -D __arm64__         # Processor
