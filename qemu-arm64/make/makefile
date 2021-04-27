@@ -41,7 +41,7 @@ export CFLAGS += -D __arm64_core__          # Core
 #===============================================================================
 
 # Toolchain Directory
-export TOOLCHAIN_DIR ?= /home/josef/opt/cross64/bin/
+export TOOLCHAIN_DIR ?= $(TOOLSDIR)/toolchain/arm64/bin
 
 # Toolchain
 export CC := $(TOOLCHAIN_DIR)/aarch64-elf-gcc
