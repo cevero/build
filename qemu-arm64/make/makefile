@@ -47,6 +47,8 @@ export TOOLCHAIN_DIR ?= $(TOOLSDIR)/toolchain/arm64/bin
 export CC := $(TOOLCHAIN_DIR)/aarch64-elf-gcc
 export LD := $(TOOLCHAIN_DIR)/aarch64-elf-ld
 export AR := $(TOOLCHAIN_DIR)/aarch64-elf-ar
+export OC := $(TOOLCHAIN_DIR)/aarch64-elf-objcopy
+export OD := $(TOOLCHAIN_DIR)/aarch64-elf-objdump
 
 # Timeout Variable
 export TIMEOUT ?= 120
@@ -67,6 +69,9 @@ export LDFLAGS += -nostdlib -nostdinc -ffreestanding -Xlinker -Map=output.map
 
 # Suffix for Objects
 export OBJ_SUFFIX := qemu-arm64
+
+# Object Copy flags
+export OCFLAGS := -O binary
 
 #===============================================================================
 # Libraries
