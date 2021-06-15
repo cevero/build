@@ -65,7 +65,7 @@ export CFLAGS += -D __HAS_HW_DIVISION=1 -D__HAS_HW_MULTIPLICATION=1
 # Linker Options
 export LDFLAGS := -march=armv8-a -mabi=lp64 -mtune=cortex-a53
 export LDFLAGS += -Wl,--nmagic -Wl,--gc-sections -nostartfiles
-export LDFLAGS += -nostdlib -nostdinc -ffreestanding -Xlinker -Map=output.map
+export LDFLAGS += -nostdlib -nostdinc -ffreestanding
 
 # Suffix for Objects
 export OBJ_SUFFIX := qemu-arm64
