@@ -40,9 +40,6 @@ export CFLAGS += -D __INTERFACE_CHECK_TARGET_AL
 all-target: make-dirs
 	$(MAKE) -C $(SRCDIR) all
 
-binary:
-	@$(OC) $(BINDIR)/hal-tests.$(OBJ_SUFFIX) $(OCFLAGS) $(BINDIR)/hal-tests.$(OBJ_SUFFIX).bin
-
 # Cleans object files.
 clean-target:
 	@$(MAKE) -C $(SRCDIR) clean
