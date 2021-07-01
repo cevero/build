@@ -27,20 +27,20 @@ OUTPUT_FORMAT("elfxx-aarch64")
 ENTRY(_do_start)
 
 /*
- * Page Size (4 KB)
+ * Page Size (64 KB)
  */
-PAGE_SIZE = 0x1000;
+PAGE_SIZE = 0x2000;
 
 /*
  * RAM Configuration
  */
-RAM_BASE = 0x40000000; /* Base Address: 2 GB */
+RAM_BASE = 0x40080000; /* Base Address: 2 GB */
 RAM_SIZE = 0x8000000;  /* Size: 128 MB       */
 
 /*
  * Boot Address
  */
-BOOT_ADDR = 0xffff000000080000;
+BOOT_ADDR = RAM_BASE;
 
 SECTIONS
 {
@@ -96,13 +96,6 @@ SECTIONS
 	KERNEL_DATA_END = .;
 
 	. =ALIGN(PAGE_SIZE);
-    pg_tbl_start = .;
-    . += 3*4096 ;
-    pg_tbl_end = .;
-
-    ram_tbl_start = .;
-    . += 3*4096;
-    ram_tbl_end = .;
 
 	/DISCARD/ :
 	{
