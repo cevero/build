@@ -41,13 +41,9 @@ export CFLAGS += -D __ri5cy__          # Core
 #===============================================================================
 
 # Toolchain Directory
-#export TOOLCHAIN_DIR ?= $(TOOLSDIR)/toolchain/riscv32/bin
 export TOOLCHAIN_DIR ?= /home/reinaldo/workspace/riscv/bin
 
 # Toolchain
-#export CC := $(TOOLCHAIN_DIR)/riscv32-elf-gcc
-#export LD := $(TOOLCHAIN_DIR)/riscv32-elf-ld
-#export AR := $(TOOLCHAIN_DIR)/riscv32-elf-ar
 
 export CC := $(TOOLCHAIN_DIR)/riscv32-unknown-elf-gcc
 export LD := $(TOOLCHAIN_DIR)/riscv32-unknown-elf-ld
@@ -56,7 +52,6 @@ export AR := $(TOOLCHAIN_DIR)/riscv32-unknown-elf-ar
 export TIMEOUT ?= 120
 
 # Compiler Options
-#export CFLAGS += -march=rv32imac -mabi=ilp32 -mcmodel=medany
 export CFLAGS += -march=rv32imcxgap8  -mabi=ilp32 -mcmodel=medany
 export CFLAGS += -ffunction-sections -fdata-sections
 export CFLAGS += -nostdlib -nostdinc -ffreestanding
