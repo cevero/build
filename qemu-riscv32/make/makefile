@@ -29,8 +29,7 @@
 export TARGET    ?= qemu-riscv32
 export PROCESSOR := riscv32
 export CLUSTER   := riscv32-cluster
-#export CORE      := rv32gc
-export CORE      := rv32imcxgap8 
+export CORE      := rv32gc
 
 export CFLAGS := -D __qemu_riscv32__    # Target
 export CFLAGS += -D __riscv32__         # Processor
@@ -42,33 +41,29 @@ export CFLAGS += -D __rv32gc__          # Core
 #===============================================================================
 
 # Toolchain Directory
-#export TOOLCHAIN_DIR ?= $(TOOLSDIR)/toolchain/riscv32/bin
-export TOOLCHAIN_DIR ?= /home/reinaldo/workspace/riscv/bin
+export TOOLCHAIN_DIR ?= $(TOOLSDIR)/toolchain/riscv32/bin
 
 # Toolchain
-#export CC := $(TOOLCHAIN_DIR)/riscv32-elf-gcc
-#export LD := $(TOOLCHAIN_DIR)/riscv32-elf-ld
-#export AR := $(TOOLCHAIN_DIR)/riscv32-elf-ar
+export CC := $(TOOLCHAIN_DIR)/riscv32-elf-gcc
+export LD := $(TOOLCHAIN_DIR)/riscv32-elf-ld
+export AR := $(TOOLCHAIN_DIR)/riscv32-elf-ar
 
-export CC := $(TOOLCHAIN_DIR)/riscv32-unknown-elf-gcc
-export LD := $(TOOLCHAIN_DIR)/riscv32-unknown-elf-ld
-export AR := $(TOOLCHAIN_DIR)/riscv32-unknown-elf-ar
 # Timeout Variable
 export TIMEOUT ?= 120
 
 # Compiler Options
-#export CFLAGS += -march=rv32imac -mabi=ilp32 -mcmodel=medany
-export CFLAGS += -march=rv32imcxgap8  -mabi=ilp32 -mcmodel=medany
+export CFLAGS += -march=rv32imac -mabi=ilp32 -mcmodel=medany
 export CFLAGS += -ffunction-sections -fdata-sections
 export CFLAGS += -nostdlib -nostdinc -ffreestanding
 export CFLAGS += -pedantic-errors
 export CFLAGS += -Wstack-usage=4096
+export CFLAGS += -Wstack-usage=65536 # 16 bits
 export CFLAGS += -Wno-error=type-limits
 export CFLAGS += -D __HAS_HW_DIVISION=1 -D__HAS_HW_MULTIPLICATION=1
 
+
 # Linker Options
-#export LDFLAGS := -march=rv32imac  -mabi=ilp32 -mcmodel=medany
-export LDFLAGS := -march=rv32imcxgap8  -mabi=ilp32 -mcmodel=medany
+export LDFLAGS := -march=rv32imac -mabi=ilp32 -mcmodel=medany
 export LDFLAGS += -Wl,--nmagic -Wl,--gc-sections
 export LDFLAGS += -nostdlib -nostdinc -ffreestanding
 
