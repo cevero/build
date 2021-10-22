@@ -41,12 +41,16 @@ export CFLAGS += -D __rv32gc__          # Core
 #===============================================================================
 
 # Toolchain Directory
-export TOOLCHAIN_DIR ?= $(TOOLSDIR)/toolchain/riscv32/bin
+#export TOOLCHAIN_DIR ?= $(TOOLSDIR)/toolchain/riscv32/bin
+export TOOLCHAIN_DIR ?= /home/reinaldo/workspace/riscv/bin
+export CC := $(TOOLCHAIN_DIR)/riscv32-unknown-elf-gcc
+export LD := $(TOOLCHAIN_DIR)/riscv32-unknown-elf-ld
+export AR := $(TOOLCHAIN_DIR)/riscv32-unknown-elf-ar
 
 # Toolchain
-export CC := $(TOOLCHAIN_DIR)/riscv32-elf-gcc
-export LD := $(TOOLCHAIN_DIR)/riscv32-elf-ld
-export AR := $(TOOLCHAIN_DIR)/riscv32-elf-ar
+#export CC := $(TOOLCHAIN_DIR)/riscv32-elf-gcc
+#export LD := $(TOOLCHAIN_DIR)/riscv32-elf-ld
+#export AR := $(TOOLCHAIN_DIR)/riscv32-elf-ar
 
 # Timeout Variable
 export TIMEOUT ?= 120
